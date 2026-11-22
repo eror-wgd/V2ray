@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تبدیل گروهی VLESS به JSON</title>
+<style>
+:root{font-family:Tahoma,Arial,sans-serif;color:#eaf0ff;background:#101522}
+*{box-sizing:border-box}body{margin:0;padding:28px 16px;background:linear-gradient(145deg,#101522,#1b2540);min-height:100vh}
+main{max-width:980px;margin:auto}.card{background:#1b2437;border:1px solid #34415d;border-radius:16px;padding:22px;box-shadow:0 12px 35px #0004}
+h1{font-size:1.5rem;margin:0 0 10px}p{color:#bdc9df;line-height:1.9}
+label{display:block;margin:18px 0 8px;font-weight:bold}
+textarea{width:100%;min-height:230px;resize:vertical;background:#0d1320;color:#eaf0ff;border:1px solid #465675;border-radius:10px;padding:14px;font:14px/1.8 ui-monospace,Consolas,monospace;direction:ltr;text-align:left}
+#output{min-height:300px}
+.buttons{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+button{border:0;border-radius:9px;padding:11px 17px;font-weight:bold;cursor:pointer;background:#6d8cff;color:#081126}
+button.secondary{background:#34435f;color:#fff}button:disabled{opacity:.5;cursor:not-allowed}
+#status{padding:10px 12px;border-radius:9px;background:#111a2a;color:#cbd8f3;line-height:1.8;white-space:pre-wrap}
+small{color:#aebbd2}.error{color:#ffb5b5}.ok{color:#a8f0c2}
+</style>
+</head>
+<body>
+<main>
+<div class="card">
+<h1>تبدیل گروهی VLESS به JSON</h1>
+<p>هر لینک <bdi>vless://</bdi> را در یک خط وارد کنید. ابزار برای هر لینک یک آبجکت با ساختار تمپلیت شما می‌سازد و خروجی را به‌صورت آرایه JSON می‌دهد. پردازش کاملاً داخل مرورگر انجام می‌شود و چیزی آپلود نمی‌شود.</p>
+<label for="input">لینک‌های VLESS (هر خط یک کانفیگ)</label>
+<textarea id="input" spellcheck="false" placeholder="vless://uuid@server.example:443?encryption=none&security=tls&type=ws&host=cdn.example.com&path=%2Fws&sni=cdn.example.com#My-Server"></textarea>
+<div class="buttons">
+<button id="convert">تبدیل به JSON</button>
+<button class="secondary" id="copy" disabled>کپی خروجی</button>
+<button class="secondary" id="download" disabled>دانلود فایل JSON</button>
+<button class="secondary" id="clear">پاک‌کردن</button>
+</div>
+<div id="status" role="status">آمادهٔ تبدیل.</div>
+<label for="output">خروجی JSON</label>
+<textarea id="output" readonly spellcheck="false" placeholder="خروجی اینجا نمایش داده می‌شود..."></textarea>
+<small>نکته: این نسخه پارامترهای رایج VLESS شامل UUID، آدرس، پورت، نوع انتقال، TLS، SNI، fingerprint، Host و Path را می‌خواند. برای لینک‌های غیر WS نیز مقدار network از لینک گرفته می‌شود؛ ساختار تنظیمات اختصاصی هر پروتکل ممکن است به ویرایش جداگانه نیاز داشته باشد.</small>
+</div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+
+function decodeFragment(s) {
+  try { return decodeURIComponent(s.replace(/\+/g, "%20")); }
+  catch { return s; }
+}
+function parseVless(line) {
+  const raw = line.trim().replace(/^['"]|['"]$/g, "");
+  if (!raw) return null;
+  if (!/^vless:\/\//i.test(raw)) throw new Error("لینک با vless:// شروع نمی‌شود");
+  let u;
+  try { u = new URL(raw); } catch { throw new Error("ساختار لینک معتبر نیست"); }
+  const id = decodeURIComponent(u.username || "");
+  const address = u.hostname;
+  const port = Number(u.port);
+  if (!id) throw new Error("UUID در لینک پیدا نشد");
+  if (!address) throw new Error("آدرس سرور در لینک پیدا نشد");
+  if (!port || port < 1 || port > 65535) throw new Error("پورت معتبر در لینک پیدا نشد");
+
+  const q = u.searchParams;
+  const network = (q.get("type") || q.get("network") || "tcp").toLowerCase();
+  const security = (q.get("security") || "none").toLowerCase();
+  const sni = q.get("sni") || q.get("servername") || "";
+  const fingerprint = q.get("fp") || "chrome";
+  const wsHost = q.get("host") || address;
+  const path = q.get("path") || "/";
+  const name = decodeFragment(u.hash.slice(1)) || address;
+
+  return {id,address,port,network,security,sni,fingerprint,wsHost,path,name};
+}
+function makeConfig(v) {
+  return {
+    dns: {
+      servers: ["103.102.228.113", "103.249.132.107"],
+      tag: "dns-module"
+    },
+    inbounds: [{
+      listen: "127.0.0.1",
+      port: 10808,
+      protocol: "socks",
+      settings: {auth:"noauth", udp:true, userLevel:8},
+      sniffing: {
+        destOverride:["http","tls","quic"],
+        enabled:true,
+        routeOnly:false
+      },
+      tag:"socks"
+    }],
+    log: {loglevel:"warning"},
+    outbounds: [
+      {
+        mux: {concurrency:-1, enabled:false},
+        protocol:"vless",
+        settings: {
+          address:v.address,
+          encryption:"none",
+          id:v.id,
+          level:8,
+          port:v.port
+        },
+        streamSettings: {
+          network:v.network,
+          security:v.security,
+          tlsSettings: {
+            allowInsecure:false,
+            fingerprint:v.fingerprint,
+            serverName:v.sni || v.address
+          },
+          wsSettings: {
+            host:v.wsHost,
+            path:v.path
+          }
+        },
+        tag:"proxy"
+      },
+      {
+        protocol:"freedom",
+        streamSettings:{network:"tcp",sockopt:{domainStrategy:"UseIP"}},
+        tag:"direct"
+      },
+      {protocol:"blackhole",settings:{},tag:"block"}
+    ],
+    policy: {
+      levels: {"8":{connIdle:300,downlinkOnly:1,handshake:4,uplinkOnly:1}},
+      system:{statsOutboundUplink:true,statsOutboundDownlink:true}
+    },
+    remarks:v.name,
+    routing: {
+      domainStrategy:"AsIs",
+      rules:[
+        {network:"udp",outboundTag:"direct",type:"field"},
+        {domain:["geosite:google"],outboundTag:"proxy",type:"field"},
+        {ip:["ext:geoip-only-cn-private.dat:private"],outboundTag:"direct",type:"field"},
+        {domain:["geosite:private"],outboundTag:"direct",type:"field"},
+        {ip:["ext:geoip-only-cn-private.dat:cn"],outboundTag:"direct",type:"field"},
+        {domain:["geosite:cn"],outboundTag:"direct",type:"field"}
+      ]
+    },
+    stats:{}
+  };
+}
+let latest = "";
+$("convert").addEventListener("click", () => {
+  const lines = $("input").value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+  if (!lines.length) {
+    $("status").textContent = "ابتدا حداقل یک لینک وارد کنید.";
+    $("status").className = "error";
+    return;
+  }
+  const configs = [], errors = [];
+  lines.forEach((line, i) => {
+    try {
+      const parsed = parseVless(line);
+      if (parsed) configs.push(makeConfig(parsed));
+    } catch(e) {
+      errors.push(`خط ${i+1}: ${e.message}`);
+    }
+  });
+  latest = JSON.stringify(configs, null, 2);
+  $("output").value = latest;
+  $("copy").disabled = !configs.length;
+  $("download").disabled = !configs.length;
+  $("status").className = errors.length ? "error" : "ok";
+  $("status").textContent =
+    `تعداد تبدیل‌شده: ${configs.length} از ${lines.length}` +
+    (errors.length ? "\nموارد ناموفق:\n" + errors.join("\n") : "\nهمهٔ لینک‌ها با موفقیت تبدیل شدند.");
+});
+$("copy").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(latest);
+    $("status").textContent = "خروجی کپی شد.";
+    $("status").className = "ok";
+  } catch {
+    $("output").focus(); $("output").select();
+    document.execCommand("copy");
+    $("status").textContent = "خروجی انتخاب شد؛ در صورت نیاز آن را دستی کپی کنید.";
+  }
+});
+$("download").addEventListener("click", () => {
+  const blob = new Blob([latest], {type:"application/json;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "vless-configs.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+$("clear").addEventListener("click", () => {
+  $("input").value = ""; $("output").value = ""; latest = "";
+  $("copy").disabled = true; $("download").disabled = true;
+  $("status").textContent = "پاک شد؛ آمادهٔ تبدیل.";
+  $("status").className = "";
+});
+</script>
+</body>
+</html>
