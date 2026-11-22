@@ -1,1682 +1,1682 @@
 [
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
-    ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "www.canva.com",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000003",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
-        }
-      },
-      "tag": "proxy"
-    },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
-        }
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
-      }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
-  "remarks": "🇹🇷|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      }
-    ]
-  },
-  "stats": {}
-},
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
-    ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "www.speedtest.net",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000003",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
-        }
-      },
-      "tag": "proxy"
-    },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
-        }
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
+        "tag": "socks"
       }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
-  "remarks": "🇹🇷|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      }
-    ]
-  },
-  "stats": {}
-},
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
     ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "104.16.108.58",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000003",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
-        }
+        "protocol": "vless",
+        "settings": {
+          "address": "www.canva.com",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be00000000",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
       },
-      "tag": "proxy"
-    },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
-        }
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
       },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
       }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
-  "remarks": "🇹🇷|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      }
-    ]
-  },
-  "stats": {}
-},
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
     ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
       },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "www.canva.com",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000002",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "remarks": "🇹🇷Türkiye|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
         }
-      },
-      "tag": "proxy"
+      ]
     },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
-        }
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
-      }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
+    "stats": {}
   },
-  "remarks": "🇨🇭|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
       {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
       }
-    ]
-  },
-  "stats": {}
-},
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
     ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "www.speedtest.net",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000002",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
-        }
+        "protocol": "vless",
+        "settings": {
+          "address": "www.canva.com",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be00000001",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
       },
-      "tag": "proxy"
-    },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
-        }
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
       },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
       }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
-  "remarks": "🇨🇭|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      }
-    ]
-  },
-  "stats": {}
-},
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
     ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
       },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "104.16.108.58",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000002",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "remarks": "🇦🇪United Arab Emirates|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
         }
-      },
-      "tag": "proxy"
+      ]
     },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
-        }
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
-      }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
+    "stats": {}
   },
-  "remarks": "🇨🇭|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
       {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
       }
-    ]
-  },
-  "stats": {}
-},
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
     ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "www.canva.com",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000001",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
-        }
+        "protocol": "vless",
+        "settings": {
+          "address": "www.canva.com",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be00000002",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
       },
-      "tag": "proxy"
-    },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
-        }
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
       },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
       }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
-  "remarks": "🇳🇱|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      }
-    ]
-  },
-  "stats": {}
-},
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
     ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
       },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "www.speedtest.net",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000001",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "remarks": "🇩🇪Germany|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
         }
-      },
-      "tag": "proxy"
+      ]
     },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
-        }
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
-      }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
+    "stats": {}
   },
-  "remarks": "🇳🇱|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
       {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
       }
-    ]
-  },
-  "stats": {}
-},
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
     ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "104.16.108.58",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000001",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
-        }
+        "protocol": "vless",
+        "settings": {
+          "address": "www.canva.com",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be00000003",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
       },
-      "tag": "proxy"
-    },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
-        }
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
       },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
       }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
-  "remarks": "🇳🇱|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      }
-    ]
-  },
-  "stats": {}
-},
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
     ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
       },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "www.canva.com",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000000",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "remarks": "🇧🇪Belgium|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
         }
-      },
-      "tag": "proxy"
+      ]
     },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
-        }
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
-      }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
+    "stats": {}
   },
-  "remarks": "🇸🇪|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
       {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
       }
-    ]
-  },
-  "stats": {}
-},
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
     ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "www.speedtest.net",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000000",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
-        }
+        "protocol": "vless",
+        "settings": {
+          "address": "www.speedtest.net",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be00000004",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
       },
-      "tag": "proxy"
-    },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
-        }
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
       },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
       }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
-  "remarks": "🇸🇪|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      }
-    ]
-  },
-  "stats": {}
-},
-{
-  "dns": {
-    "servers": [
-      "103.102.228.113",
-      "103.249.132.107"
     ],
-    "tag": "dns-module"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
       },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "address": "104.16.108.58",
-        "encryption": "none",
-        "id": "fb9d718c-4e0e-eb8a-1c20-c8e200000000",
-        "level": 8,
-        "port": 443
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "serverName": "www-1.1v2oo.workers.dev"
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "remarks": "🇹🇷Türkiye|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
         },
-        "wsSettings": {
-          "host": "www-1.1v2oo.workers.dev",
-          "path": "/PickoGaming"
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        }
+      ]
+    },
+    "stats": {}
+  },
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "www.speedtest.net",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be00000005",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
         }
       },
-      "tag": "proxy"
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
     },
-    {
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "tcp",
-        "sockopt": {
-          "domainStrategy": "UseIP"
+    "remarks": "🇦🇪United Arab Emirates|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        }
+      ]
+    },
+    "stats": {}
+  },
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "www.speedtest.net",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be00000006",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
         }
       },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
       }
     },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
+    "remarks": "🇩🇪Germany|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        }
+      ]
+    },
+    "stats": {}
   },
-  "remarks": "🇸🇪|PICKO11",
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
       {
-        "network": "udp",
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:google"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "ext:geoip-only-cn-private.dat:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:cn"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
       }
-    ]
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "www.speedtest.net",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be00000007",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "remarks": "🇧🇪Belgium|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        }
+      ]
+    },
+    "stats": {}
   },
-  "stats": {}
-}
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "104.16.108.58",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be00000008",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "remarks": "🇹🇷Türkiye|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        }
+      ]
+    },
+    "stats": {}
+  },
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "104.16.108.58",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be00000009",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "remarks": "🇦🇪United Arab Emirates|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        }
+      ]
+    },
+    "stats": {}
+  },
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "104.16.108.58",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be0000000a",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "remarks": "🇩🇪Germany|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        }
+      ]
+    },
+    "stats": {}
+  },
+  {
+    "dns": {
+      "servers": [
+        "103.102.228.113",
+        "103.249.132.107"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "104.16.108.58",
+          "encryption": "none",
+          "id": "7052f010-7824-3734-0757-f5be0000000b",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "serverName": "www-1.1v2oo.workers.dev"
+          },
+          "wsSettings": {
+            "host": "www-1.1v2oo.workers.dev",
+            "path": "/PickoGaming"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "remarks": "🇧🇪Belgium|Pck-u9189i1",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "network": "udp",
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "ext:geoip-only-cn-private.dat:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "domain": [
+            "geosite:cn"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        }
+      ]
+    },
+    "stats": {}
+  }
 ]
